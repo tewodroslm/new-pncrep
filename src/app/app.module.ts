@@ -4,10 +4,25 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GenTablesComponent } from './gen-tables/gen-tables.component';
-import { LoginComponent } from './landing/login/login.component';
-import { HomeComponent } from './landing/home/home.component';
-import { SideBarComponent } from './landing/side-bar/side-bar.component';
+import { LoginComponent } from './layout/login/login.component';
+import { HomeComponent } from './layout/home/home.component';
+import { SideBarComponent } from './layout/side-bar/side-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { FooterComponent } from './layout/footer/footer.component';
+import { ProfileComponent } from './layout/profile/profile.component';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +30,26 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     GenTablesComponent,
     LoginComponent,
     HomeComponent,
-    SideBarComponent
+    SideBarComponent,
+    FooterComponent,
+    ProfileComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,  
+    FormsModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTableModule,
+    MatSlideToggleModule,
+    MatSelectModule,
+    MatOptionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

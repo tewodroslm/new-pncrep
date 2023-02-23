@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+ 
+  constructor(private router: Router ) { }
 
-  constructor() { }
+  loginValid = true;
+  public isAuthenticated = false;
+
+  username = "";
+  password = "";
+
 
   ngOnInit(): void {
+  }
+
+  onSubmit(){
+    this.router.navigate(['home']);
   }
 
 }
