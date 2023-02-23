@@ -7,6 +7,7 @@ import { GenTablesComponent } from './gen-tables/gen-tables.component';
 import { LoginComponent } from './landing/login/login.component';
 import { HomeComponent } from './landing/home/home.component';
 import { SideBarComponent } from './landing/side-bar/side-bar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SideBarComponent } from './landing/side-bar/side-bar.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
