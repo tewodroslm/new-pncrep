@@ -1,29 +1,10 @@
-// .container{
-     
-//     width: 100%;
-//     height: 100%;
-
-//     mat-card {
-//         max-width: 75%;
-//         margin: 16em auto;
-//         text-align: center;
-//     }
-      
-//     mat-form-field {
-//         display: block;
-//     }
-
-//     .btn-visit{
-//         text-align: end;
-//     }
-// }
-
+ 
 .landing-container{
     background-color: #fff;
     min-height: calc(100% - 150px);
     
     .sidebar{
-        min-width: 256;
+        min-width: 256px;
         overflow: hidden !important;
     }
     .main-container {
@@ -32,4 +13,17 @@
             padding: 24px;
         }
     }
+    .header-c{
+        background-color: rgb(169, 248, 248);
+        width: 500px;
+        height: 200px;
+    }
+}
+.footer-c{
+    width: 100%;
+    background-color: black;
+    color: white;
+    height: 100px;
+    text-align: center;
+    padding-top: 31px;
 }

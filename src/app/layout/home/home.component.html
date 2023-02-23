@@ -1,10 +1,25 @@
-
+<mat-toolbar>
+    <button 
+        mat-icon-button 
+        class="example-icon" 
+        aria-label="Example icon-button with menu icon">
+      <!-- <mat-icon>arrow_left_alt</mat-icon> -->
+      <mat-icon >keyboard_backspace</mat-icon>
+    </button>
+</mat-toolbar>
+  
 <mat-sidenav-container class="landing-container">
     <mat-sidenav mode="side" class="sidebar" opened>
         <app-side-bar></app-side-bar>
     </mat-sidenav>
+    <!-- <mat-sidenav opened mode="p">End content</mat-sidenav> -->
+ 
     <mat-sidenav-content class="main-container">
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
 <!-- footer goes here -->
+<div class="footer-c">
+    <p>footer</p>
+</div>
+  
