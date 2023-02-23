@@ -26,7 +26,7 @@ import { PaymentComponent } from './payment/payment.component';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { DashboardComponent } from './layout/dashboard/dashboard.component';
-
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -50,6 +50,7 @@ import { DashboardComponent } from './layout/dashboard/dashboard.component';
     MatCardModule,
     MatMenuModule,
     MatIconModule,
+    MatDividerModule,
     MatButtonModule,
     MatTableModule,
     MatSlideToggleModule,
