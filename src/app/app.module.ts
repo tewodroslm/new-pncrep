@@ -24,6 +24,10 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { ProfileComponent } from './layout/profile/profile.component';
 import { PaymentComponent } from './payment/payment.component';
 
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { DashboardComponent } from './layout/dashboard/dashboard.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +38,7 @@ import { PaymentComponent } from './payment/payment.component';
     FooterComponent,
     ProfileComponent,
     PaymentComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +55,7 @@ import { PaymentComponent } from './payment/payment.component';
     MatSlideToggleModule,
     MatSelectModule,
     MatOptionModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

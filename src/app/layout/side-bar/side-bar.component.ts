@@ -9,6 +9,8 @@ export class SideBarComponent implements OnInit {
 
   constructor() { }
 
+  showFiller = true;
+
   ngOnInit(): void {
   }
 
