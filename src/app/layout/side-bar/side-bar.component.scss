@@ -10,5 +10,29 @@
           // background-color: rgb(102, 100, 100);
       }
     }
+
+    .items{
+
+      .item-lists{
+        ::ng-deep{
+          .mat-list-base .mat-list-item .mat-list-item-content, .mat-list-base .mat-list-option .mat-list-item-content {
+            display: flex;
+            flex-direction: row; 
+            box-sizing: border-box;
+            padding: 0 16px;
+            padding-bottom: 30px;
+            margin-top: 30px; 
+            position: relative;
+            height: inherit;
+          }
+        }
+        .mat-list-item{
+          .ico {
+            color: red;
+            margin: 0px 10px;
+            padding-right: 5px;
+          }
+        }
+      }
+    }
 }
-   

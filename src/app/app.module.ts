@@ -24,9 +24,10 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { ProfileComponent } from './layout/profile/profile.component';
 import { PaymentComponent } from './payment/payment.component';
 
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { DashboardComponent } from './layout/dashboard/dashboard.component';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import {MatDividerModule} from '@angular/material/divider';
     MatMenuModule,
     MatIconModule,
     MatDividerModule,
+    MatListModule,
     MatButtonModule,
     MatTableModule,
     MatSlideToggleModule,
