@@ -6,23 +6,34 @@
     </div> 
     <div class="items">
       <div class="item-lists">
-        <mat-list>
-          <mat-list-item class="mat-list-item">
-            <mat-icon class="ico"> info </mat-icon>
-            Item 1
-          </mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item class="mat-list-item">
-            <mat-icon class="ico"> info </mat-icon>
-            Item 2
-          </mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item class="mat-list-item">
-            <mat-icon class="ico"> info </mat-icon>
-            Item 3
-          </mat-list-item>
-          <mat-divider></mat-divider>
-        </mat-list>
+        <div *ngIf="router.url === '/home'; else do">
+          <mat-list>
+            <mat-list-item class="mat-list-item">
+              <mat-icon class="ico"> info </mat-icon>
+              Home
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>
+        </div>
+       <ng-template #do>
+          <mat-list>
+            <mat-list-item class="mat-list-item">
+              <mat-icon class="ico"> info </mat-icon>
+              Item 1
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item class="mat-list-item">
+              <mat-icon class="ico"> info </mat-icon>
+              Item 2
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item class="mat-list-item">
+              <mat-icon class="ico"> info </mat-icon>
+              Item 3
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>
+        </ng-template>
       </div>
     </div>
 </div>
