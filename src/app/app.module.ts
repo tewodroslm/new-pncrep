@@ -25,6 +25,8 @@ import { ProfileComponent } from './layout/profile/profile.component';
 import { PaymentComponent } from './payment/payment.component';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTabsModule } from '@angular/material/tabs';
+
 import { DashboardComponent } from './layout/dashboard/dashboard.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
@@ -48,6 +50,7 @@ import { MatListModule } from '@angular/material/list';
     FormsModule,
     MatToolbarModule,
     MatInputModule,
+    MatTabsModule,
     MatCardModule,
     MatMenuModule,
     MatIconModule,
