@@ -1,4 +1,13 @@
-
+.mat-icon-button {
+    padding: 0;
+    min-width: 0;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    margin-left: 17em;
+    line-height: 40px;
+    border-radius: 50%;
+}
 .pr-sec{
     right: 145px;
     margin-top: 8px;
