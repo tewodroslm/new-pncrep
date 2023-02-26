@@ -2,8 +2,9 @@
     <button 
         mat-icon-button 
         class="example-icon" 
-        aria-label="Example icon-button with menu icon">
-      <mat-icon (click)="backClicked()">keyboard_backspace</mat-icon>
+        (click)="backClicked()"
+        aria-label="Example icon-button with menu icon" *ngIf="router.url !== '/home'">
+      <mat-icon>keyboard_backspace</mat-icon>
     </button>
     <div class="pr-sec">
         <div class="profile">
@@ -27,6 +28,6 @@
     </mat-sidenav-content>
 </mat-sidenav-container>
 <div class="footer-c">
-    <p>footer</p>
+    <p>@copy right</p>
 </div>
   

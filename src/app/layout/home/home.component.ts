@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router, private _location: Location) { }
+  constructor(public router: Router, private _location: Location) { }
 
   menuVisible = false;
 
