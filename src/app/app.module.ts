@@ -30,6 +30,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { DashboardComponent } from './layout/dashboard/dashboard.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { ReportsComponent } from './reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { MatListModule } from '@angular/material/list';
     ProfileComponent,
     PaymentComponent,
     DashboardComponent,
+    ReportsComponent,
   ],
   imports: [
     BrowserModule,
