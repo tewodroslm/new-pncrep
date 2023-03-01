@@ -31,6 +31,7 @@ import { DashboardComponent } from './layout/dashboard/dashboard.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { ReportsComponent } from './reports/reports.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { ReportsComponent } from './reports/reports.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,  
+    HttpClientModule,
     FormsModule,
     MatToolbarModule,
     MatInputModule,
