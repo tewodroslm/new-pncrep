@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataShareService } from 'src/app/data-share.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  username : string = '';
+  email: string = '';
+  role :any[] | undefined;
+
+  constructor(private data: DataShareService) { }
 
   ngOnInit(): void {
+    this.username = this.data.user.username + this.data.user.lastname;
+    this.email = this.data.user.email;
+    this.role =  this.data.user.role;
   }
 
 }

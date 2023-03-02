@@ -11,8 +11,8 @@
             <div class="avatar" (mouseenter)="mouseEnter()" (mouseleave)="mouseLeave()">
                 <mat-icon>account_circle</mat-icon>
                 <div class="menu" *ngIf="menuVisible">
-                    <div class="pr-icon">Profile</div>
-                    <div class="pr-icon">Logout</div>
+                    <div routerLink="/home/profile" class="pr-icon">Profile</div>
+                    <div (click)="logout()" class="pr-icon">Logout</div>
                 </div>
             </div>
         </div>

@@ -1,1 +1,32 @@
-<p>profile works!</p>
+<div class="container">
+    <div class="message">
+        <p>User Profile</p>
+        <mat-divider></mat-divider>
+        <div class="body">
+            <div class="tag">
+                <div class="tag-title">
+                    User Name : 
+                </div>
+                <span>
+                    {{ this.username || ''}}
+                </span>
+            </div>
+            <div class="tag">
+                <div class="tag-title">
+                    Email : 
+                </div>
+                <span>
+                    {{ this.email || ''}}
+                </span>
+            </div>
+            <div class="tag">
+                <div class="tag-title">
+                    Granted Authority :
+                </div>
+                <div >
+                    {{ this.role || ''}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  

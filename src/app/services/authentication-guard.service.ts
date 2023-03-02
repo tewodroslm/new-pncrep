@@ -17,4 +17,9 @@ export class AuthenticationGaurd {
         const url = this.backend + endpoint.AUTH_USER;
         return this.httpClient.post(url, user,  { responseType: 'json' });
     }
+
+    logoutUser(){
+        const url = this.backend + endpoint.LOGOUT_USER;
+        return this.httpClient.get(url);
+    }
 }

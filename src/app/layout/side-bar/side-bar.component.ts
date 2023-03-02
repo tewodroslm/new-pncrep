@@ -23,23 +23,20 @@ export class SideBarComponent implements OnInit {
 
   tabSelected(val: string){
     switch(val){
-      case "payment": {
-        this.data.updatePaymentTab();
+      case "payment": { 
         this.router.navigate(["home/payment"])
         this.paymentTab = true;
         this.reportTab = false;
         this.adminTab = false;
         break;
       }
-      case "admin": {
-        this.data.updateAdminTab();
+      case "admin": { 
         this.adminTab = true;
         this.paymentTab = false;
         this.reportTab = false;
         break;
       }
-      case "report": {
-        this.data.updateReportTab();
+      case "report": { 
         this.router.navigate(["home/report"])
         this.paymentTab = false;
         this.reportTab = true;

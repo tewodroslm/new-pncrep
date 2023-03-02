@@ -7,7 +7,7 @@
     </div> 
     <div class="items">
       <div class="item-lists">
-        <div *ngIf="router.url === '/home'; else do">
+        <div *ngIf="router.url === '/home' || router.url ==='/home/profile'; else do">
           <mat-list>
             <mat-list-item class="mat-list-item">
               <mat-icon class="ico"> info </mat-icon>
