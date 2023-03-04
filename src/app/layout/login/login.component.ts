@@ -35,13 +35,14 @@ export class LoginComponent implements OnInit {
  
     this.auth.loginUser(user).subscribe(  
       (response: any) => {  
-        this.data.userInfo = {
+        const userInf = {
           username: response.uname,
           lastname: response.lname,
           email: response.email,
           role: response.role
         };
-
+        this.data.userInfo = userInf;
+        this.auth.holdUser(this.data.getUser());
         this.router.navigateByUrl('/home');        
       },  
       error => {  

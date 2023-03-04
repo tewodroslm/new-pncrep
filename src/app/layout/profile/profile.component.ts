@@ -15,9 +15,10 @@ export class ProfileComponent implements OnInit {
   constructor(private data: DataShareService) { }
 
   ngOnInit(): void {
-    this.username = this.data.user.username + this.data.user.lastname;
-    this.email = this.data.user.email;
-    this.role =  this.data.user.role;
+    const uInf = JSON.parse(localStorage.getItem('userinfo')!); 
+    this.username = uInf.username + " " + uInf.lastname;
+    this.email = uInf.email;
+    this.role =  uInf.role;
   }
 
 }
