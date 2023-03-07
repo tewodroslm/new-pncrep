@@ -20,6 +20,7 @@ export class DataShareService {
     this.user.lastname = user.lastname;
     this.user.role = [...user.role];
     this.user.email = user.email;
+    this.user.password = user.password;
   }
 
   

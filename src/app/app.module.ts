@@ -31,7 +31,8 @@ import { DashboardComponent } from './layout/dashboard/dashboard.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { ReportsComponent } from './reports/reports.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpInterceptorService } from './http-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,13 @@ import { HttpClientModule } from '@angular/common/http';
     MatOptionModule,
     MatSidenavModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
