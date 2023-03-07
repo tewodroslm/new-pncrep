@@ -39,7 +39,8 @@ export class LoginComponent implements OnInit {
           username: response.uname,
           lastname: response.lname,
           email: response.email,
-          role: response.role
+          role: response.role,
+          password: this.password,
         };
         this.data.userInfo = userInf;
         this.auth.holdUser(this.data.getUser());
