@@ -19,6 +19,19 @@
         text-align: center;
         height: 623px;    
         overflow: auto;
+        ::ng-deep .mat-tab-group[mat-stretch-tabs]>.mat-tab-header .mat-tab-label {
+            flex-grow: 0; 
+            justify-content: left;
+        }
+        ::ng-deep .mat-tab-label { 
+            background-color: #d5d5d5;
+         }
+        
+        /* Styles for the active tab label */
+        ::ng-deep .mat-tab-label.mat-tab-label-active { 
+            background-color: white;
+         }
+        
     }
       
     mat-form-field {
@@ -42,6 +55,6 @@
     .dash-detail{
         color: #6b6b6b8f;
         text-align: left;
-    }
+    } 
     
 }

@@ -1,4 +1,12 @@
 table.mat-table {
     border-spacing: 0;
     width: 100%;
+} 
+
+
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+    /* padding: 0; */
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    text-align: left;
 }
