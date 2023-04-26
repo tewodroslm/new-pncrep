@@ -11,6 +11,13 @@
         color: #ebeaf0;
         font-family: sans-serif;
         font-size: x-large;
+        .header{
+            display: flex;
+            justify-content: space-between;
+            div{
+                margin-top: 23px;
+            }
+        }
     }
 
     mat-card {
