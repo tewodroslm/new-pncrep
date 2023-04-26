@@ -1,0 +1,233 @@
+
+<div mat-dialog-title class="header">
+  Create Payment
+</div>
+<div class="cont">
+
+  <div mat-dialog-content>
+    
+    <mat-stepper [linear]="isLinear" #stepper>
+      <form [formGroup]="firstFormGroup">
+        <mat-step [stepControl]="firstFormGroup">
+        
+          <ng-template matStepLabel>Step 1</ng-template>
+          <!-- <mat-form-field appearance="fill"> -->
+            <!-- <mat-label>Name</mat-label>
+            <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required> -->
+            <div class="field-title">SELECT VENDOR</div>
+            <div>
+              <div class="col w-34">
+                <div>
+                  <span class="vendor-name">Vendor Name<span>*</span></span>
+                </div> 
+                <div>
+                  <!-- select box -->
+                  <mat-form-field appearance="fill">
+                    <mat-label>Supplier name</mat-label>
+                    <mat-select formControlName="selectedVendor">
+                      <mat-option *ngFor="let food of foods" [value]="food.value">
+                        {{food.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  
+                </div>
+              </div> 
+
+              <div class="details-form">
+                <div class="flex-child magenta1">
+                  <div class="det-title">
+                    <span>Payment type</span>
+                  </div>
+                  <div>
+                    <input formControlName="payment_type" class="pay-detail" type="text" placeholder="ach"/>
+                  </div>
+                </div>
+
+                <div class="flex-child magenta2">
+                  <div  class="det-title">
+                    <span>Currency</span>
+                  </div>
+                  <div>
+                    <input  formControlName="currency"  class="pay-detail" type="text" placeholder="USD" />
+                  </div>
+                </div>
+
+                <div class="flex-child magenta3">
+                  <div  class="det-title">
+                    <span>Tax</span>
+                  </div>
+                  <div>
+                    <input  formControlName="tax"   class="pay-detail"type="text" placeholder="2"/>
+                  </div>
+                </div>
+
+                <div class="flex-child magenta4">
+                  <div  class="det-title">
+                    <span>Shipment-method</span>
+                  </div>
+                  <div>
+                    <input  formControlName="shipment" class="pay-detail" type="text" placeholder="International" />
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="more-detail">
+                <div class="c-date-note">
+                  <div>
+                    <div class="det-1">Due Date</div>
+                    <mat-form-field appearance="outline">
+  
+                      <input  matInput formControlName="releasedAt" 
+                             [matDatepicker]="releasedAtPicker">
+                    
+                      <mat-datepicker-toggle matSuffix [for]="releasedAtPicker" [disabled]="false">
+                    
+                      </mat-datepicker-toggle>
+                    
+                      <mat-datepicker #releasedAtPicker [disabled]="false">
+                    
+                      </mat-datepicker>
+                    
+                    </mat-form-field>
+                  </div>
+                  <mat-divider></mat-divider>
+                  <div>
+                    <div class="det-1">Add Note</div>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                      <mat-label>Leave a comment</mat-label>
+                      <textarea formControlName="note" cols="50" matInput placeholder="Ex. It makes me feel..."></textarea>
+                    </mat-form-field>
+                  </div>
+                </div> 
+              </div>
+
+
+            </div>
+          <!-- </mat-form-field> -->
+          <div> 
+            <div class="amount">
+              Total Amount: {{ 3 + 38 }}
+            </div>
+            <mat-divider></mat-divider>
+            <mat-dialog-actions align="end">
+              <button mat-button > Cancel</button>
+              <button cdkFocusInitial mat-button matStepperNext (click)="stepAndVerifyForm()"> Next</button>
+            </mat-dialog-actions>
+          </div>
+       
+      </mat-step>
+      <mat-step [stepControl]="firstFormGroup" label="Verify form"> 
+          <!-- <mat-form-field appearance="fill">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                   required>
+          </mat-form-field> -->
+          <div>
+            <p class="field-title">
+              ARE YOU SURE YOU WANT TO ADD A PAYMENT
+            </p>
+          </div>
+
+          <div>
+            <div class="flex-child">
+              <div>
+                <span class="title">SUPPLIER</span>
+              </div>
+              <div>
+                <span>Lego3</span>
+              </div>
+            </div>
+            <div class="verify-detail">
+              <div class="flex-child">
+                <div>
+                  <span class="title">PAYMENT METHOD</span>
+                </div>
+                <div>
+                  <span>ACH</span>
+                </div>
+              </div>
+
+              <div class="flex-child">
+                <div>
+                  <span class="title">CURRENCY</span>
+                </div>
+                <div>
+                  <span class="title">USD</span>
+                </div>
+              </div>
+
+              <div class="flex-child">
+                <div>
+                  <span class="title">DUE DATE</span>
+                </div>
+                <div>
+                  <span>02-28-2023</span>
+                </div>
+              </div>
+              
+            </div>
+            <div class="verify-detail">
+              <div class="flex-child">
+                <div>
+                  <span class="title">AMOUNT</span>
+                </div>
+                <div>
+                  <span>12</span>
+                </div>
+              </div>
+
+              <div class="flex-child">
+                <div>
+                  <span class="title">TAX</span>
+                </div>
+                <div>
+                  <span>3</span>
+                </div>
+              </div>
+
+              <div class="flex-child">
+                <div>
+                  <span class="title">NET</span>
+                </div>
+                <div>
+                  <span>22</span>
+                </div>
+              </div>
+              
+            </div>
+            <div>
+              <span class="title">Note:</span>
+              <div>
+                <p>test note 1 2 3</p>
+              </div>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="amount">
+            Total Amount: {{ 3 + 38 }}
+          </div>
+          <mat-divider></mat-divider>
+          <div>  
+            <mat-dialog-actions align="end">
+              <button mat-raised-button matStepperPrevious>GO BACK</button>
+              <button mat-raised-button> CANCEL</button>
+              <button mat-raised-button color="primary" cdkFocusInitial mat-button matStepperNext> SUBMIT</button>
+            </mat-dialog-actions>
+          </div> 
+      </mat-step>
+      </form>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+    
+  </div>
+
+</div>
