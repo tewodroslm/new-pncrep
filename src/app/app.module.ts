@@ -8,7 +8,7 @@ import { LoginComponent } from './layout/login/login.component';
 import { HomeComponent } from './layout/home/home.component';
 import { SideBarComponent } from './layout/side-bar/side-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
@@ -19,7 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
-import { MatOptionModule } from '@angular/material/core';
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { FooterComponent } from './layout/footer/footer.component';
 import { ProfileComponent } from './layout/profile/profile.component';
 import { PaymentComponent } from './payment/payment.component';
@@ -30,9 +30,15 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { DashboardComponent } from './layout/dashboard/dashboard.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import {MatStepperModule} from '@angular/material/stepper';
 import { ReportsComponent } from './reports/reports.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorService } from './http-interceptor.service';
+import { PaymentActionComponent } from './actions/payment-action/payment-action.component';
+import { CreatePaymentDialogComponent } from './dialogs/create-payment-dialog/create-payment-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -46,6 +52,8 @@ import { HttpInterceptorService } from './http-interceptor.service';
     PaymentComponent,
     DashboardComponent,
     ReportsComponent,
+    PaymentActionComponent,
+    CreatePaymentDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,8 +64,13 @@ import { HttpInterceptorService } from './http-interceptor.service';
     MatToolbarModule,
     MatInputModule,
     MatTabsModule,
+    MatDialogModule,
     MatCardModule,
+    MatDatepickerModule, 
+    MatNativeDateModule, 
     MatMenuModule,
+    ReactiveFormsModule,
+    MatStepperModule,
     MatIconModule,
     MatDividerModule,
     MatListModule,
