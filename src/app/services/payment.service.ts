@@ -17,11 +17,18 @@ export class PaymentService {
     // get all payments
 
     // create payments
+    createPayment(payment: any){
+        return this.httpClient.post(this.url + endpoint.PAYMENT_USER + `/create`, payment);
+    }
 
     // get my payment
 
     getMyPayments(){
-       return this.httpClient.get(this.url + endpoint.GET_MY_PAYMENT + `/get?userId=2`)
+       return this.httpClient.get(this.url + endpoint.PAYMENT_USER + `/get?userId=2`);
+    }
+
+    getCompany(){
+       return this.httpClient.get(this.url + endpoint.COMPANY_LIST);
     }
 
 }
