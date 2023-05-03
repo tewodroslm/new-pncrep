@@ -25,8 +25,8 @@
                   <mat-form-field appearance="fill">
                     <mat-label>Supplier name</mat-label>
                     <mat-select formControlName="selectedVendor">
-                      <mat-option *ngFor="let food of foods" [value]="food.value">
-                        {{food.viewValue}}
+                      <mat-option (click)="companySelected(c.companyName)" *ngFor="let c of companyList" [value]="c.id">
+                        {{ c.companyName }}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
@@ -46,10 +46,10 @@
 
                 <div class="flex-child magenta2">
                   <div  class="det-title">
-                    <span>Currency</span>
+                    <span>Amount</span>
                   </div>
                   <div>
-                    <input  formControlName="currency"  class="pay-detail" type="text" placeholder="USD" />
+                    <input  formControlName="amount"  class="pay-detail" type="text" placeholder="$100" />
                   </div>
                 </div>
 
@@ -58,7 +58,7 @@
                     <span>Tax</span>
                   </div>
                   <div>
-                    <input  formControlName="tax"   class="pay-detail"type="text" placeholder="2"/>
+                    <input  formControlName="tax"  class="pay-detail" type="text" placeholder="2"/>
                   </div>
                 </div>
 
@@ -111,19 +111,18 @@
               Total Amount: {{ 3 + 38 }}
             </div>
             <mat-divider></mat-divider>
+            <div *ngIf="!firstFormGroup.valid && stepperBol">
+              <p>Please complete the form before moving forwrad!</p>
+            </div>
+            <mat-divider></mat-divider>
             <mat-dialog-actions align="end">
               <button mat-button > Cancel</button>
-              <button cdkFocusInitial mat-button matStepperNext (click)="stepAndVerifyForm()"> Next</button>
+              <button cdkFocusInitial mat-button #stepper (click)="stepAndVerifyForm()"> Next</button>
             </mat-dialog-actions>
           </div>
        
       </mat-step>
-      <mat-step [stepControl]="firstFormGroup" label="Verify form"> 
-          <!-- <mat-form-field appearance="fill">
-            <mat-label>Address</mat-label>
-            <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                   required>
-          </mat-form-field> -->
+      <mat-step [stepControl]="firstFormGroup" label="Verify form">  
           <div>
             <p class="field-title">
               ARE YOU SURE YOU WANT TO ADD A PAYMENT
@@ -136,7 +135,7 @@
                 <span class="title">SUPPLIER</span>
               </div>
               <div>
-                <span>Lego3</span>
+                <span>{{ companyName }}</span>
               </div>
             </div>
             <div class="verify-detail">
@@ -145,7 +144,7 @@
                   <span class="title">PAYMENT METHOD</span>
                 </div>
                 <div>
-                  <span>ACH</span>
+                  <span>{{ firstFormGroup.get('payment_type').value }}</span>
                 </div>
               </div>
 
@@ -163,7 +162,7 @@
                   <span class="title">DUE DATE</span>
                 </div>
                 <div>
-                  <span>02-28-2023</span>
+                  <span> {{ firstFormGroup.get('releasedAt').value }} </span>
                 </div>
               </div>
               
@@ -174,7 +173,7 @@
                   <span class="title">AMOUNT</span>
                 </div>
                 <div>
-                  <span>12</span>
+                  <span>{{ firstFormGroup.get('amount').value }}</span>
                 </div>
               </div>
 
@@ -183,7 +182,7 @@
                   <span class="title">TAX</span>
                 </div>
                 <div>
-                  <span>3</span>
+                  <span>{{ firstFormGroup.get('tax').value }}</span>
                 </div>
               </div>
 
@@ -200,7 +199,7 @@
             <div>
               <span class="title">Note:</span>
               <div>
-                <p>test note 1 2 3</p>
+                <p>{{ firstFormGroup.get('note').value }}</p>
               </div>
             </div>
           </div>
@@ -213,7 +212,7 @@
             <mat-dialog-actions align="end">
               <button mat-raised-button matStepperPrevious>GO BACK</button>
               <button mat-raised-button> CANCEL</button>
-              <button mat-raised-button color="primary" cdkFocusInitial mat-button matStepperNext> SUBMIT</button>
+              <button mat-raised-button color="primary" cdkFocusInitial mat-button matStepperNext (click)='createPayment()'> SUBMIT</button>
             </mat-dialog-actions>
           </div> 
       </mat-step>
