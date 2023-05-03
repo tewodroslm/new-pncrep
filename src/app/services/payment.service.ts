@@ -18,7 +18,7 @@ export class PaymentService {
 
     // create payments
     createPayment(payment: any){
-        return this.httpClient.post(this.url + endpoint.PAYMENT_USER + `/create`, payment);
+        return this.httpClient.post(this.url + endpoint.PAYMENT_USER + `/create`, payment,   { responseType: 'text' as const });
     }
 
     // get my payment

@@ -116,7 +116,7 @@
             </div>
             <mat-divider></mat-divider>
             <mat-dialog-actions align="end">
-              <button mat-button > Cancel</button>
+              <button mat-button mat-dialog-close> Cancel</button>
               <button cdkFocusInitial mat-button #stepper (click)="stepAndVerifyForm()"> Next</button>
             </mat-dialog-actions>
           </div>
@@ -191,7 +191,7 @@
                   <span class="title">NET</span>
                 </div>
                 <div>
-                  <span>22</span>
+                  <span>{{ firstFormGroup.get('amount').value - firstFormGroup.get('tax').value}}</span>
                 </div>
               </div>
               
@@ -205,24 +205,23 @@
           </div>
           <mat-divider></mat-divider>
           <div class="amount">
-            Total Amount: {{ 3 + 38 }}
+            Total Amount: {{ firstFormGroup.get('amount').value - firstFormGroup.get('tax').value }}
           </div>
           <mat-divider></mat-divider>
           <div>  
             <mat-dialog-actions align="end">
               <button mat-raised-button matStepperPrevious>GO BACK</button>
-              <button mat-raised-button> CANCEL</button>
-              <button mat-raised-button color="primary" cdkFocusInitial mat-button matStepperNext (click)='createPayment()'> SUBMIT</button>
+              <button mat-raised-button mat-dialog-close> CANCEL</button>
+              <button mat-raised-button color="primary" cdkFocusInitial mat-button #stepper2 (click)='createPayment()'> SUBMIT</button>
             </mat-dialog-actions>
           </div> 
       </mat-step>
       </form>
       <mat-step>
         <ng-template matStepLabel>Done</ng-template>
-        <p>You are now done.</p>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="stepper.reset()">Reset</button>
+        <p> {{ paymentCreationMsg }}</p>
+        <div> 
+          <button mat-button mat-dialog-close>Close</button>
         </div>
       </mat-step>
     </mat-stepper>

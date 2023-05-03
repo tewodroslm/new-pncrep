@@ -28,7 +28,10 @@ export class CreatePaymentDialogComponent implements OnInit {
   companyList: any[] = [];
   stepperBol = false;
 
+  paymentCreationMsg = ''
+
   @ViewChild('stepper') stepper: MatStepper;
+  @ViewChild('stepper') stepper2: MatStepper;
 
   constructor(private _formBuilder: FormBuilder, private paymentService: PaymentService) { }
 
@@ -61,15 +64,16 @@ export class CreatePaymentDialogComponent implements OnInit {
     this.paymentService.createPayment(payment).subscribe({
       next: () => {
         console.log('Next ---')
+        this.paymentCreationMsg = 'Payment created. You are now done.';
+        this.stepper2.next();
       },
       error: (e) => {
-        console.log("******* Error occured *******")
+        console.log("******* Error occured *******");
         console.error(e);
-      },
-      complete :  () => {
-        console.log('Payment Created Successfully')
-      } 
+        this.paymentCreationMsg = 'Payment not created. Error while creating payment';
+      }
     })
+
   }
 
   async getListOfCompany(){
