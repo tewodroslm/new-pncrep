@@ -1,13 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
-
-export interface PeriodicElement {
-  id: number;
-  pay_description : string;
-  status: string;
-  referenceNumber: string;
-  amount: number;
-} 
 @Component({
   selector: 'app-gen-tables',
   templateUrl: './gen-tables.component.html',
@@ -18,20 +13,26 @@ export class GenTablesComponent implements OnInit {
   @Input() tableData: any[] = [];
 
   displayedColumns: string[] = ['id', 'pay_description', 'referenceNumber', 'amount', 'status', 'action'];
-  dataSource = [];
-  constructor() { }
+  dataSource: MatTableDataSource<any>;;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  constructor() { 
+  }
 
   ngOnInit(): void {
   }
 
-  ngOnChanges(){
-    console.log("Inside table comp")
-    console.log(this.tableData)
-    this.tableData.forEach(element => {
-      console.log(element)
-    });
+  ngOnChanges(){  
 
-    this.dataSource = [...this.tableData];
+    console.log('table length ', this.tableData.length)
+
+    this.dataSource = new MatTableDataSource(this.tableData);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+ 
+
   }
 
 }

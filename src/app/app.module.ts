@@ -40,6 +40,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import {MatDatepickerModule} from '@angular/material/datepicker';
 
+import {MatPaginatorModule} from '@angular/material/paginator';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +70,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatDialogModule,
     MatCardModule,
     MatDatepickerModule, 
+    MatPaginatorModule,
     MatNativeDateModule, 
     MatMenuModule,
     ReactiveFormsModule,
