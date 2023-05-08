@@ -21,10 +21,11 @@ export class DataShareService {
     this.user.role = [...user.role];
     this.user.email = user.email;
     this.user.password = user.password;
+    this.user.userId = user.userId; 
   }
 
   
-  getUser(){
+  getUser(): User{
     return this.user;
   }
    

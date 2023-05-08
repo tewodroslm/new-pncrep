@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
+import { DataShareService } from "../data-share.service";
 import { endpoint } from "../enum/endpoint";
 
 @Injectable({
@@ -11,7 +12,8 @@ export class PaymentService {
     url: string = environment.backendUrl
 
     constructor(
-        private httpClient: HttpClient
+        private httpClient: HttpClient,
+        private dataShare: DataShareService
     ){}
 
     // get all payments
@@ -23,9 +25,13 @@ export class PaymentService {
 
     // get my payment
 
-    getMyPayments(){
-       return this.httpClient.get(this.url + endpoint.PAYMENT_USER + `/get?userId=2`);
+    getMyPayments(userId: any){
+       return this.httpClient.get(this.url + endpoint.PAYMENT_USER + `/get?userId=` + userId);
     }
+
+    getALLPayments(){
+        return this.httpClient.get(this.url + endpoint.PAYMENT_MANAGER);
+     }
 
     getCompany(){
        return this.httpClient.get(this.url + endpoint.COMPANY_LIST);

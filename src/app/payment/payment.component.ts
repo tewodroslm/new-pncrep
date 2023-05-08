@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { PaymentService } from '../services/payment.service';
+import { DataShareService } from '../data-share.service';
 
 @Component({
   selector: 'app-payment',
@@ -11,7 +12,8 @@ export class PaymentComponent implements OnInit{
 
   tableData = [];
   constructor(
-    private paymentService: PaymentService
+    private paymentService: PaymentService,
+    private dataShare: DataShareService
   ) {  
   }
  
@@ -20,12 +22,22 @@ export class PaymentComponent implements OnInit{
   }
 
   async loadMyPayment(){
-    this.paymentService.getMyPayments().subscribe((data: any) => {
-      // console.log(data)
-      this.tableData = [...data];
-      console.log("After loading data")
-      console.log(this.tableData)
-    })
+    const userId = this.dataShare.getUser();
+    console.log('****** User Id *****')
+    console.log(userId)
+    if(userId.role.includes('MANAGER')){
+      this.paymentService.getALLPayments().subscribe((data: any) => {
+        const response = data.response.body;
+        this.tableData = [...response]; 
+      })
+    }else{
+      this.paymentService.getMyPayments(userId.userId).subscribe((data: any) => {
+        // console.log(data)
+        const response = data.response.body;
+        this.tableData = [...response]; 
+      })
+    }
+   
   }
 
 }

@@ -4,4 +4,5 @@ export class User {
     email!: string;
     role!: any[];
     password!: string;
+    userId: number;
 }

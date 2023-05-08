@@ -81,7 +81,7 @@ export class CreatePaymentDialogComponent implements OnInit {
       next: (data: any) => {
         console.log('Next ---')
         console.log(data)
-        this.companyList = [...data]
+        this.companyList = [...data.response.body]
       },
       error: (e) => {
         console.log("******* Error occured *******")
