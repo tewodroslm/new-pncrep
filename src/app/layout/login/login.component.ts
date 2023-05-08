@@ -34,13 +34,15 @@ export class LoginComponent implements OnInit {
     } 
  
     this.auth.loginUser(user).subscribe(  
-      (response: any) => {  
+      (res: any) => {   
+        const response = res.response.body;
         const userInf = {
           username: response.uname,
           lastname: response.lname,
           email: response.email,
           role: response.role,
           password: this.password,
+          userId: response.uId,
         };
         this.data.userInfo = userInf;
         this.auth.holdUser(this.data.getUser());
