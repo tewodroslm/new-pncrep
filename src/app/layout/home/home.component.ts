@@ -11,7 +11,11 @@ import { AuthenticationGaurd } from 'src/app/services/authentication-guard.servi
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public router: Router, private authentic: AuthenticationGaurd) { }
+  constructor(
+    public router: Router, 
+    private authentic: AuthenticationGaurd,
+    private location: Location
+    ) { }
 
   menuVisible = false;
 
@@ -19,7 +23,8 @@ export class HomeComponent implements OnInit {
   }
 
   backClicked() {
-    this.router.navigate(['/home'])
+    // this.router.navigate(['/home'])
+    this.location.back();
   }
 
   mouseEnter(){

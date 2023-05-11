@@ -20,7 +20,7 @@ export class PaymentService {
 
     // create payments
     createPayment(payment: any){
-        return this.httpClient.post(this.url + endpoint.PAYMENT_USER + `/create`, payment,   { responseType: 'text' as const });
+        return this.httpClient.post(this.url + endpoint.PAYMENT_USER + `/create`, payment);
     }
 
     // get my payment
@@ -30,11 +30,15 @@ export class PaymentService {
     }
 
     getALLPayments(){
-        return this.httpClient.get(this.url + endpoint.PAYMENT_MANAGER);
+        return this.httpClient.get(this.url + endpoint.PAYMENT_MANAGER + `/get`);
      }
 
     getCompany(){
        return this.httpClient.get(this.url + endpoint.COMPANY_LIST);
+    }
+
+    approvePaymentAction(paymentAction: any){
+        return this.httpClient.post(this.url + endpoint.PAYMENT_MANAGER + `/action`, paymentAction)
     }
 
 }

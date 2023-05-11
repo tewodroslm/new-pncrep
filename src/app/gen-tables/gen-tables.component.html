@@ -30,7 +30,25 @@
 
         <ng-container matColumnDef="action">
           <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
-          <mat-cell *matCellDef="let element"> ... </mat-cell>
+          <mat-cell *matCellDef="let element"> 
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_horiz</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button (click)="actionClick('APPROVED', element)" mat-menu-item> 
+                <span>Approve</span>
+              </button>
+              <button mat-menu-item disabled> 
+                <span>Hold</span>
+              </button>
+              <button mat-menu-item> 
+                <span>Reject</span>
+              </button>
+              <button mat-menu-item> 
+                <span>Cancel</span>
+              </button>
+            </mat-menu>
+          </mat-cell>
         </ng-container>
       
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row >

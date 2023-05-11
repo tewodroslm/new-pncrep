@@ -2,6 +2,8 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { DataShareService } from '../data-share.service';
+import { PaymentService } from '../services/payment.service';
 
 @Component({
   selector: 'app-gen-tables',
@@ -18,7 +20,7 @@ export class GenTablesComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() { 
+  constructor(private paymentService: PaymentService, private data: DataShareService) { 
   }
 
   ngOnInit(): void {
@@ -32,6 +34,35 @@ export class GenTablesComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
  
+
+  }
+
+  actionClick(action: string, element){
+    
+    const paymentBody = {
+      userId: this.data.getUser().userId,
+      actionStatus: action,
+      paymentId: element.id
+    }
+
+    if(action == 'APPROVED'){
+      this.paymentService.approvePaymentAction(paymentBody).subscribe({
+        next : (data: any) => {
+          console.log('Action Approved!')
+          console.log(data)
+        },
+        error: (error : any) => {
+          console.log('Error Occured')
+          console.log(error)
+        }
+      })
+    }
+
+    // {
+    //   "userId": 4,
+    //   "actionStatus": "PENDING_APPROVAL",
+    //   "paymentId": 5
+    // }
 
   }
 
