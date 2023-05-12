@@ -20,7 +20,7 @@ export class GenTablesComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private paymentService: PaymentService, private data: DataShareService) { 
+  constructor(private paymentService: PaymentService, public data: DataShareService) { 
   }
 
   ngOnInit(): void {
@@ -44,26 +44,28 @@ export class GenTablesComponent implements OnInit {
       actionStatus: action,
       paymentId: element.id
     }
-
-    if(action == 'APPROVED'){
-      this.paymentService.approvePaymentAction(paymentBody).subscribe({
-        next : (data: any) => {
-          console.log('Action Approved!')
-          console.log(data)
-        },
-        error: (error : any) => {
-          console.log('Error Occured')
-          console.log(error)
-        }
-      })
-    }
-
+ 
+    this.applyActionCall(paymentBody);
+   
     // {
     //   "userId": 4,
     //   "actionStatus": "PENDING_APPROVAL",
     //   "paymentId": 5
     // }
 
+  }
+
+  async applyActionCall(paymentBody: any){
+    this.paymentService.approvePaymentAction(paymentBody).subscribe({
+      next : (data: any) => {
+        console.log('Action Approved!')
+        console.log(data)
+      },
+      error: (error : any) => {
+        console.log('Error Occured')
+        console.log(error)
+      }
+    })
   }
 
 }

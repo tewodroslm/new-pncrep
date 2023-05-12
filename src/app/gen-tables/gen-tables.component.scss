@@ -10,3 +10,9 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
     border-bottom-style: solid;
     text-align: left;
 }
+
+.inactive{
+    color: gray;
+    pointer-events:none;
+
+}

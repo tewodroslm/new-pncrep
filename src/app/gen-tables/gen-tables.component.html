@@ -35,16 +35,22 @@
               <mat-icon>more_horiz</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-              <button (click)="actionClick('APPROVED', element)" mat-menu-item> 
+              <button [ngClass]="{
+                inactive: !data.getUser().role.includes('MANAGER')}" 
+                (click)="actionClick('APPROVED', element)" 
+                mat-menu-item> 
                 <span>Approve</span>
               </button>
-              <button mat-menu-item disabled> 
+              <button
+                (click)="actionClick('ON_HOLD', element)" mat-menu-item > 
                 <span>Hold</span>
               </button>
-              <button mat-menu-item> 
+              <button [ngClass]="{
+                inactive: !data.getUser().role.includes('MANAGER')}" 
+                disabled="true" (click)="actionClick('REJECT', element)" mat-menu-item> 
                 <span>Reject</span>
               </button>
-              <button mat-menu-item> 
+              <button (click)="actionClick('CANCELED', element)" mat-menu-item> 
                 <span>Cancel</span>
               </button>
             </mat-menu>

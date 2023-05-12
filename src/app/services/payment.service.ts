@@ -38,7 +38,7 @@ export class PaymentService {
     }
 
     approvePaymentAction(paymentAction: any){
-        return this.httpClient.post(this.url + endpoint.PAYMENT_MANAGER + `/action`, paymentAction)
+        return this.httpClient.post(this.url + endpoint.PAYMENT_ACTION , paymentAction)
     }
 
 }
