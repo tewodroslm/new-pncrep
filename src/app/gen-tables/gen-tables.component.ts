@@ -25,7 +25,7 @@ export class GenTablesComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  statusArray: string[] = ['INITIATED', 'ON HOLD', 'CANCELED', 'APPROVED', 'PENDING APPROVAL']
+  statusArray: string[] = ['Initiated', 'On hold', 'Canceled', 'Approved', 'Pending approval']
 
   constructor(
     private paymentService: PaymentService, 
@@ -38,13 +38,13 @@ export class GenTablesComponent implements OnInit {
   }
 
   ngOnChanges(){  
-
     console.log('table length ', this.tableData.length)
 
     this.dataSource = new MatTableDataSource(this.tableData);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
  
+    this.cd.detectChanges();
 
   }
 

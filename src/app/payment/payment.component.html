@@ -19,7 +19,7 @@
                
                 <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
                     <mat-tab label="My Payments">
-                        <app-gen-tables [tableData]="tableData"></app-gen-tables>
+                        <app-gen-tables (methodEvent)="loadMyPayment()" [tableData]="tableData"></app-gen-tables>
                     </mat-tab>
                     <mat-tab label="All Payments">
                         Content 2
