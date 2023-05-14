@@ -1,8 +1,11 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataShareService } from '../data-share.service';
+import { ErrorDialogComponent } from '../dialogs/error-dialog/error-dialog.component';
+import { SuccessDialogComponent } from '../dialogs/success-dialog/success-dialog.component';
 import { PaymentService } from '../services/payment.service';
 
 @Component({
@@ -17,10 +20,18 @@ export class GenTablesComponent implements OnInit {
   displayedColumns: string[] = ['id', 'pay_description', 'referenceNumber', 'amount', 'status', 'action'];
   dataSource: MatTableDataSource<any>;;
 
+  @Output() methodEvent = new EventEmitter<any>();
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private paymentService: PaymentService, public data: DataShareService) { 
+  statusArray: string[] = ['INITIATED', 'ON HOLD', 'CANCELED', 'APPROVED', 'PENDING APPROVAL']
+
+  constructor(
+    private paymentService: PaymentService, 
+    public data: DataShareService,
+    private dialog: MatDialog,
+    private cd: ChangeDetectorRef) { 
   }
 
   ngOnInit(): void {
@@ -60,10 +71,27 @@ export class GenTablesComponent implements OnInit {
       next : (data: any) => {
         console.log('Action Approved!')
         console.log(data)
+        const dialogRef = this.dialog.open(SuccessDialogComponent,{
+          width: '500px',
+          height: '130px',
+          data:{
+            message: 'Action applied successfully.',
+            status: paymentBody.actionStatus
+          }
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.methodEvent.emit();
+        })
       },
       error: (error : any) => {
         console.log('Error Occured')
         console.log(error)
+        const dialogRef = this.dialog.open(ErrorDialogComponent,{
+          data:{
+            message: 'Error occured while applying action.',
+            status: paymentBody.actionStatus
+          }
+        });
       }
     })
   }
