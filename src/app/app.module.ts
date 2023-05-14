@@ -34,13 +34,15 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { ReportsComponent } from './reports/reports.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorService } from './http-interceptor.service';
-import { PaymentActionComponent } from './actions/payment-action/payment-action.component';
 import { CreatePaymentDialogComponent } from './dialogs/create-payment-dialog/create-payment-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { ErrorDialogComponent } from './dialogs/error-dialog/error-dialog.component';
+import { SuccessDialogComponent } from './dialogs/success-dialog/success-dialog.component';
+import { PaymentActionComponent } from './actions/payment-action/payment-action.component';
 
 
 @NgModule({
@@ -57,6 +59,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     ReportsComponent,
     PaymentActionComponent,
     CreatePaymentDialogComponent,
+    SuccessDialogComponent,
+    ErrorDialogComponent,
   ],
   imports: [
     BrowserModule,
