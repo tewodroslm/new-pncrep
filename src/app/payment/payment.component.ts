@@ -25,17 +25,21 @@ export class PaymentComponent implements OnInit{
     const userId = this.dataShare.getUser();
     console.log('****** User Id *****')
     console.log(userId)
-    if(userId.role.includes('MANAGER')){
-      this.paymentService.getALLPayments().subscribe((data: any) => {
-        const response = data.response.body;
-        this.tableData = [...response]; 
-      })
-    }else{
+    const role = userId.role.find((o) => o.role == 'MANAGER');
+    
+    console.log(role)
+    
+    if(role == undefined){
       this.paymentService.getMyPayments(userId.userId).subscribe((data: any) => {
         // console.log(data)
         const response = data.response.body;
         this.tableData = [...response]; 
       })
+    }else{
+        this.paymentService.getALLPayments().subscribe((data: any) => {
+          const response = data.response.body;
+          this.tableData = [...response]; 
+        })
     }
    
   }

@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataShareService } from 'src/app/data-share.service';
 import { AuthenticationGaurd } from 'src/app/services/authentication-guard.service';
-import { UserLogin } from "../../models/user-login";
 
 @Component({
   selector: 'app-login',
@@ -28,21 +27,23 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
+
     const user = {
       username: this.username,
       password: this.password
     } 
- 
+    console.log("User ", user)
     this.auth.loginUser(user).subscribe(  
       (res: any) => {   
+        console.log(res)
         const response = res.response.body;
         const userInf = {
-          username: response.uname,
-          lastname: response.lname,
+          username: response.name,
+          lastname: response.lastname,
           email: response.email,
-          role: response.role,
+          role: response.roles,
           password: this.password,
-          userId: response.uId,
+          userId: response.id,
         };
         this.data.userInfo = userInf;
         this.auth.holdUser(this.data.getUser());
@@ -50,6 +51,7 @@ export class LoginComponent implements OnInit {
       },  
       error => {  
         this.loginValid = false;  
+        console.log(error)
       }  
    );   
   }

@@ -4,5 +4,6 @@ export const endpoint  = {
     PAYMENT_USER: 'payment/user',
     PAYMENT_MANAGER: 'payment/manager',
     PAYMENT_ACTION: 'payment/action',
-    COMPANY_LIST: 'company/get'
+    COMPANY_LIST: 'company/get',
+    ADMIN_EP: 'api/m1'
 }   

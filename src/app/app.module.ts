@@ -42,7 +42,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ErrorDialogComponent } from './dialogs/error-dialog/error-dialog.component';
 import { SuccessDialogComponent } from './dialogs/success-dialog/success-dialog.component';
-import { PaymentActionComponent } from './actions/payment-action/payment-action.component';
+import { SharedModule } from './shared/shared.module';
+import { AdminModule } from './admin/admin.module';
+import { CreateManagerDialogComponent } from './dialogs/create-manager-dialog/create-manager-dialog.component';
 
 
 @NgModule({
@@ -57,37 +59,19 @@ import { PaymentActionComponent } from './actions/payment-action/payment-action.
     PaymentComponent,
     DashboardComponent,
     ReportsComponent,
-    PaymentActionComponent,
     CreatePaymentDialogComponent,
     SuccessDialogComponent,
     ErrorDialogComponent,
+    CreateManagerDialogComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SharedModule,
+    AdminModule,
     BrowserAnimationsModule,  
     HttpClientModule,
     FormsModule,
-    MatToolbarModule,
-    MatInputModule,
-    MatTabsModule,
-    MatDialogModule,
-    MatCardModule,
-    MatDatepickerModule, 
-    MatPaginatorModule,
-    MatNativeDateModule, 
-    MatMenuModule,
-    ReactiveFormsModule,
-    MatStepperModule,
-    MatIconModule,
-    MatDividerModule,
-    MatListModule,
-    MatButtonModule,
-    MatTableModule,
-    MatSlideToggleModule,
-    MatSelectModule,
-    MatOptionModule,
-    MatSidenavModule
   ],
   providers: [
     {

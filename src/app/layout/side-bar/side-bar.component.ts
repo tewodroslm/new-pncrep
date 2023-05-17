@@ -31,6 +31,7 @@ export class SideBarComponent implements OnInit {
         break;
       }
       case "admin": { 
+        this.router.navigate(['home/admin/user'])
         this.adminTab = true;
         this.paymentTab = false;
         this.reportTab = false;

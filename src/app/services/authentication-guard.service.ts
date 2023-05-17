@@ -2,8 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { endpoint } from "../enum/endpoint";
-import { BehaviorSubject, Observable } from "rxjs";
-import { UserLogin } from "../models/user-login";
+import { BehaviorSubject, Observable } from "rxjs"; 
 
 @Injectable({
     providedIn: 'root'
@@ -19,6 +18,7 @@ export class AuthenticationGaurd {
     backend: string = environment.backendUrl;
 
     loginUser(user: any){
+        console.log("Inside the service loginUser")
         const url = this.backend + endpoint.AUTH_USER;
         return this.httpClient.post(url, user,  { responseType: 'json' });
     }
@@ -27,6 +27,10 @@ export class AuthenticationGaurd {
         console.log('hold user info in service call ', user)
         localStorage.setItem('userinfo', JSON.stringify(user));
         this.isLoggedInSubject.next(true);
+    }
+
+    isUserLoggedIn(){
+        return localStorage.getItem('userinfo')
     }
 
     logoutUser(){

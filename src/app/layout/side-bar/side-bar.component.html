@@ -32,7 +32,9 @@
               Reports
             </mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item class="mat-list-item" (click)="tabSelected('admin')">
+            <mat-list-item 
+              class="mat-list-item" 
+              (click)="tabSelected('admin')">
               <mat-icon [ngClass]="{'ico': adminTab, 'icon-gray': adminTab === false}">
                  info 
               </mat-icon>

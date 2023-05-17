@@ -1,1 +1,89 @@
-<p>user-controll works!</p>
+<div class="container">
+    <div class="message">
+        <div class="header">
+            <p>Adminstration Portal.</p>
+            <div>
+                <app-admin-action></app-admin-action>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+    </div>
+    <mat-card>
+        <mat-card-content>
+            <div>
+                <div class="header-title">
+                    <p>
+                        Adminstration
+                    </p>
+                </div>
+               
+                <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+                    <mat-tab label="Basic Users"> 
+                        <div>
+                          <mat-table  [dataSource]="dataSource" matSort class="mat-elevation-z8"> 
+                        
+                                <ng-container matColumnDef="id">
+                                  <mat-header-cell  mat-sort-header *matHeaderCellDef> ID. </mat-header-cell>
+                                  <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                                </ng-container>
+                              
+                                <ng-container matColumnDef="name">
+                                  <mat-header-cell mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                                  <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                                </ng-container>
+          
+                                <ng-container matColumnDef="lastName">
+                                  <mat-header-cell *matHeaderCellDef> Last name </mat-header-cell>
+                                  <mat-cell *matCellDef="let element"> {{ element.lastName }} </mat-cell>
+                                </ng-container>
+                               
+                                <ng-container matColumnDef="role">
+                                  <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
+                                  <mat-cell *matCellDef="let element"> {{ element.roles[0]['role'] }} </mat-cell>
+                                </ng-container>
+                        
+                                <ng-container matColumnDef="email">
+                                  <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                                  <mat-cell *matCellDef="let element"> {{ element.email }} </mat-cell>
+                                </ng-container>
+                        
+                                <ng-container matColumnDef="action">
+                                  <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+                                  <mat-cell *matCellDef="let element"> 
+                                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                                      <mat-icon>more_horiz</mat-icon>
+                                    </button>
+                                    <mat-menu #menu="matMenu">
+                                      <button 
+                                      mat-menu-item
+                                        > 
+                                        <span>View</span>
+                                      </button>
+                                      <button
+                                      mat-menu-item
+                                       > 
+                                        <span>Mute</span>
+                                      </button>
+                                    </mat-menu>
+                                  </mat-cell>
+                                </ng-container>
+                              
+                                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row >
+                                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row >
+                            </mat-table> 
+                        </div>
+                                <mat-paginator  
+                                              pageSize=9
+                                              aria-label="Select page">
+                                </mat-paginator>
+                    </mat-tab>
+                    <mat-tab label="All Managers">
+                        Content 2
+                    </mat-tab> 
+                  </mat-tab-group>
+            </div>
+            <div class="btn-visit">
+             </div>
+        </mat-card-content>
+    </mat-card> 
+</div>  
