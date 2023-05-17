@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { pathToFileURL } from 'url';
+import { AdminRoutingModule } from './admin/admin-route-routing.module';
 import { DashboardComponent } from './layout/dashboard/dashboard.component';
 import { HomeComponent } from './layout/home/home.component';
 import { LoginComponent } from './layout/login/login.component';
@@ -22,10 +23,13 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent
-      }
+      },
+      {
+        path: 'admin',
+        loadChildren: () => AdminRoutingModule ,
+      },
     ]
   },
-  
 ];
 
 @NgModule({
