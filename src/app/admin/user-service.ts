@@ -16,13 +16,15 @@ export class UserService {
         private dataShare: DataShareService
     ){}
 
-    // get all payments
-
-    // create payments
     getBasicUser(){
         return this.httpClient.get(this.url + endpoint.ADMIN_EP + `/basic-users`);
     }
 
-  
+    createManager(manager: any){
+        return this.httpClient.post(this.url + endpoint.ADMIN_EP + `/register`, manager);
+    }
 
+    getManagers(){
+        return this.httpClient.get(this.url + endpoint.GET_MANAGERS);
+    }
 }

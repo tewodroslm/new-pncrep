@@ -17,7 +17,11 @@
                     </p>
                 </div>
                
-                <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+                <mat-tab-group
+                 [(selectedIndex)]="selectedTabIndex"  
+                 (selectedTabChange)="onTabChanged($event);"
+                 mat-stretch-tabs="false"
+                 mat-align-tabs="start">
                     <mat-tab label="Basic Users"> 
                         <div>
                           <mat-table  [dataSource]="dataSource" matSort class="mat-elevation-z8"> 
@@ -72,10 +76,10 @@
                                 <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row >
                             </mat-table> 
                         </div>
-                                <mat-paginator  
-                                              pageSize=9
-                                              aria-label="Select page">
-                                </mat-paginator>
+                        <mat-paginator  
+                          pageSize=9
+                          aria-label="Select page">
+                        </mat-paginator>
                     </mat-tab>
                     <mat-tab label="All Managers">
                         Content 2

@@ -12,7 +12,10 @@ export class UserControllComponent implements OnInit {
   displayedColumns = ["id", "name", "lastName", "role", "email", "action"]
   constructor(private userService: UserService) { }
 
+  selectedTabIndex;
+
   ngOnInit(): void {
+    this.selectedTabIndex = 0;
     this.loadBasicUser();
   }
 
@@ -23,6 +26,26 @@ export class UserControllComponent implements OnInit {
       this.dataSource = data.response.body;
     })
     
+  }
+
+  loadManagers(){
+    this.userService.getManagers().subscribe({
+      next: (data: any) => {
+        console.log("!!!!!!")
+        console.log(data)
+      }, 
+      error: (e) => {
+        console.log(e)
+      }
+    })
+  }
+
+  onTabChanged(event){
+    let clickedIndex = event.index;
+    console.log("****8 ", clickedIndex)
+    if(clickedIndex == 1){
+      this.loadManagers();
+    }
   }
 
 }

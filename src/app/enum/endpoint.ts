@@ -5,5 +5,6 @@ export const endpoint  = {
     PAYMENT_MANAGER: 'payment/manager',
     PAYMENT_ACTION: 'payment/action',
     COMPANY_LIST: 'company/get',
-    ADMIN_EP: 'api/m1'
+    ADMIN_EP: 'api/m1',
+    GET_MANAGERS: 'api/a1/managers'
 }   

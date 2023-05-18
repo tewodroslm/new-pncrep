@@ -1,0 +1,41 @@
+
+<div mat-dialog-title class="header">
+    Create Manager
+</div>
+<div class="cont">
+  <div mat-dialog-content>
+    <form [formGroup]="userForm">
+      <div class="container">
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+    
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" formControlName="email"  required>
+
+        <label for="name"><b>Name</b></label>
+        <input type="text" placeholder="Enter name" formControlName="name" required>
+
+        <label for="lname"><b>Last Name</b></label>
+        <input type="text" placeholder="Enter Last name" formControlName="lastName"  required>
+        
+        <label for="role"><b>Role</b></label>
+        <input type="text" placeholder="Enter role" formControlName="role"required>
+    
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" formControlName="password"  required>
+    
+        <label for="approveLimit"><b>Approve Limit</b></label>
+        <input type="text" placeholder="approveLimit" formControlName="approveLimit" required>
+        
+        <hr>
+    
+        <button type="submit" (click)="createManager()" class="registerbtn">Register</button>
+
+      </div>
+    
+      <div> 
+        <button mat-button mat-dialog-close>Close</button>
+      </div>
+    </form>
+  </div>
+</div>
