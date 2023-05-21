@@ -29,8 +29,13 @@ export class AuthenticationGaurd {
         this.isLoggedInSubject.next(true);
     }
 
-    isUserLoggedIn(){
-        return localStorage.getItem('userinfo')
+    isUserLoggedIn(): Boolean {
+        console.log('isUserLoggedIn')
+        console.log(localStorage.getItem('userinfo'))
+        if(localStorage.getItem('userinfo')){
+            return true
+        }
+        return false;
     }
 
     logoutUser(){

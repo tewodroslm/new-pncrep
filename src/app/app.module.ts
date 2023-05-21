@@ -45,6 +45,7 @@ import { SuccessDialogComponent } from './dialogs/success-dialog/success-dialog.
 import { SharedModule } from './shared/shared.module';
 import { AdminModule } from './admin/admin.module';
 import { CreateManagerDialogComponent } from './dialogs/create-manager-dialog/create-manager-dialog.component';
+import { AuthGuard } from './auth-guard.service';
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import { CreateManagerDialogComponent } from './dialogs/create-manager-dialog/cr
       provide: HTTP_INTERCEPTORS,
       useClass: HttpInterceptorService,
       multi: true
-    }
+    },
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
