@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataShareService } from 'src/app/data-share.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,13 +9,19 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    public data: DataShareService) { }
 
   ngOnInit(): void {
   }
 
   visit(){
-    this.router.navigate(["home/payment"], )
+    if(this.data.getUser().role[0].role == 'ADMIN'){
+      this.router.navigate(["home/admin/user"], )
+    }else{
+      this.router.navigate(["home/payment"], )
+    }
   }
 
 }

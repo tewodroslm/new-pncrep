@@ -18,14 +18,19 @@
         </div>
        <ng-template #do>
           <mat-list>
-            <mat-list-item class="mat-list-item" (click)="tabSelected('payment')">
+            <mat-list-item
+            *ngIf="data.getUser().role[0].role == 'USER' || data.getUser().role[0].role == 'MANAGER'" 
+            class="mat-list-item" (click)="tabSelected('payment')">
               <mat-icon [ngClass]="{'ico': paymentTab, 'icon-gray': paymentTab === false}"> 
                 info 
               </mat-icon>
               Payments
             </mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item class="mat-list-item" (click)="tabSelected('report')">
+            <mat-list-item 
+              *ngIf="data.getUser().role[0].role == 'USER' || data.getUser().role[0].role == 'MANAGER'" 
+              class="mat-list-item" 
+              (click)="tabSelected('report')">
               <mat-icon [ngClass]="{'ico': reportTab, 'icon-gray': reportTab === false}"> 
                 info 
               </mat-icon>
@@ -33,6 +38,7 @@
             </mat-list-item>
             <mat-divider></mat-divider>
             <mat-list-item 
+              *ngIf="data.getUser().role[0].role == 'ADMIN'" 
               class="mat-list-item" 
               (click)="tabSelected('admin')">
               <mat-icon [ngClass]="{'ico': adminTab, 'icon-gray': adminTab === false}">

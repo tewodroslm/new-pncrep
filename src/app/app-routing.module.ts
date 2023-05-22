@@ -16,19 +16,20 @@ const routes: Routes = [
   { 
     path: 'home', 
     component: HomeComponent,
-    canActivate: [AuthGuard],
     children: [
-      { path: '', component: DashboardComponent},
-      { path: 'payment', component: PaymentComponent },
-      { path: 'report', component: ReportsComponent },
-      { path: 'admin', component: PaymentComponent },
+      { path: '', component: DashboardComponent, canActivate: [AuthGuard]},
+      { path: 'payment', component: PaymentComponent, canActivate: [AuthGuard] },
+      { path: 'report', component: ReportsComponent, canActivate: [AuthGuard] },
+      // { path: 'admin', component: PaymentComponent, canActivate: [AuthGuard] },
       {
         path: 'profile',
-        component: ProfileComponent
+        component: ProfileComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'admin',
         loadChildren: () => AdminRoutingModule ,
+        canActivate: [AuthGuard]
       },
     ]
   },

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from '../user-service';
 
 @Component({
@@ -9,8 +12,18 @@ import { UserService } from '../user-service';
 export class UserControllComponent implements OnInit {
 
   dataSource;
+
+  dataSourceMan: MatTableDataSource<any>;
   displayedColumns = ["id", "name", "lastName", "role", "email", "action"]
-  constructor(private userService: UserService) { }
+  displayedColumnsMan = ["id", "name", "lastName","approveLimit", "role", "email", "action"]
+  
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginatorMan: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  mangerLoaded = false;
+  
+  constructor(private userService: UserService, private cd: ChangeDetectorRef) { }
 
   selectedTabIndex;
 
@@ -23,7 +36,10 @@ export class UserControllComponent implements OnInit {
     this.userService.getBasicUser().subscribe((data: any) => {
       console.log("#####")
       console.log(data)
-      this.dataSource = data.response.body;
+      // this.dataSource = data.response.body;
+      this.dataSource = new MatTableDataSource(data.response.body);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     })
     
   }
@@ -33,6 +49,10 @@ export class UserControllComponent implements OnInit {
       next: (data: any) => {
         console.log("!!!!!!")
         console.log(data)
+        this.dataSourceMan = new MatTableDataSource(data.response.body);
+        this.dataSourceMan.paginator = this.paginatorMan;
+        this.dataSourceMan.sort = this.sort;
+        this.mangerLoaded =true;
       }, 
       error: (e) => {
         console.log(e)
@@ -41,13 +61,17 @@ export class UserControllComponent implements OnInit {
   }
 
   onTabChanged(event){
+    this.dataSource = [];
     let clickedIndex = event.index;
     console.log("****8 ", clickedIndex)
     if(clickedIndex == 1){
       this.loadManagers();
-    }
+    }else{
+      this.loadBasicUser();
+    }     
+    this.cd.detectChanges();
   }
-
+ 
 }
 
 

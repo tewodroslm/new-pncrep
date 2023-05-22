@@ -108,7 +108,7 @@
           <!-- </mat-form-field> -->
           <div> 
             <div class="amount">
-              Total Amount: {{ 3 + 38 }}
+              Total Amount: {{ firstFormGroup.get('amount').value }}
             </div>
             <mat-divider></mat-divider>
             <div *ngIf="!firstFormGroup.valid && stepperBol">

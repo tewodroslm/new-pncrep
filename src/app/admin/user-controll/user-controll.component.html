@@ -75,16 +75,73 @@
                                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row >
                                 <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row >
                             </mat-table> 
-                        </div>
-                        <mat-paginator  
+                        </div> 
+                    </mat-tab>
+                    <mat-tab label="All Managers">
+                      <div>
+                        <mat-table  [dataSource]="dataSourceMan" matSort class="mat-elevation-z8"> 
+                      
+                              <ng-container matColumnDef="id">
+                                <mat-header-cell  mat-sort-header *matHeaderCellDef> ID. </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                              </ng-container>
+                            
+                              <ng-container matColumnDef="name">
+                                <mat-header-cell mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                              </ng-container>
+        
+                              <ng-container matColumnDef="lastName">
+                                <mat-header-cell *matHeaderCellDef> Last name </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{ element.lastName }} </mat-cell>
+                              </ng-container>
+                             
+                              <ng-container matColumnDef="role">
+                                <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{ element.roles[0]['role'] }} </mat-cell>
+                              </ng-container>
+                      
+                              <ng-container matColumnDef="email">
+                                <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{ element.email }} </mat-cell>
+                              </ng-container>
+
+                              <ng-container matColumnDef="approveLimit">
+                                <mat-header-cell *matHeaderCellDef> Approve limit </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{ element.approveLimit }} </mat-cell>
+                              </ng-container>
+                      
+                              <ng-container matColumnDef="action">
+                                <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> 
+                                  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                                    <mat-icon>more_horiz</mat-icon>
+                                  </button>
+                                  <mat-menu #menu="matMenu">
+                                    <button 
+                                    mat-menu-item
+                                      > 
+                                      <span>View</span>
+                                    </button>
+                                    <button
+                                    mat-menu-item
+                                     > 
+                                      <span>Mute</span>
+                                    </button>
+                                  </mat-menu>
+                                </mat-cell>
+                              </ng-container>
+                            
+                              <mat-header-row *matHeaderRowDef="displayedColumnsMan"></mat-header-row >
+                              <mat-row *matRowDef="let row; columns: displayedColumnsMan;"></mat-row >
+                          </mat-table> 
+                      </div> 
+                    </mat-tab>  
+                  </mat-tab-group>
+                  <mat-paginator  
                           pageSize=9
                           aria-label="Select page">
                         </mat-paginator>
-                    </mat-tab>
-                    <mat-tab label="All Managers">
-                        Content 2
-                    </mat-tab> 
-                  </mat-tab-group>
             </div>
             <div class="btn-visit">
              </div>
