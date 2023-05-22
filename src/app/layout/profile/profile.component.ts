@@ -16,9 +16,11 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     const uInf = JSON.parse(localStorage.getItem('userinfo')!); 
-    this.username = uInf.username + " " + uInf.lastname;
+    this.username = uInf.username;
     this.email = uInf.email;
-    this.role =  uInf.role;
+    this.role =  uInf.role[0].role;
   }
 
 }
+
+//data.getUser().role[0].role == 'ADMIN'"
