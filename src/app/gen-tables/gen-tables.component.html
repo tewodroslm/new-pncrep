@@ -36,7 +36,7 @@
             </button>
             <mat-menu #menu="matMenu">
               <button [ngClass]="{
-                inactive: !data.getUser().role.includes('MANAGER')}" 
+                inactive: data.getUser().role[0].role !== 'MANAGER'}" 
                 (click)="actionClick('APPROVED', element)" 
                 mat-menu-item> 
                 <span>Approve</span>
@@ -46,7 +46,7 @@
                 <span>Hold</span>
               </button>
               <button [ngClass]="{
-                inactive: !data.getUser().role.includes('MANAGER')}" 
+                inactive: data.getUser().role[0].role !== 'MANAGER'}" 
                 disabled="true" (click)="actionClick('REJECT', element)" mat-menu-item> 
                 <span>Reject</span>
               </button>
