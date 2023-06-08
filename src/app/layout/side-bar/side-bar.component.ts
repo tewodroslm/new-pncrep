@@ -14,7 +14,7 @@ export class SideBarComponent implements OnInit {
   reportTab = false;
 
 
-  constructor(public router: Router, private data: DataShareService) { }
+  constructor(public router: Router, public data: DataShareService) { }
 
   showFiller = true;
 
